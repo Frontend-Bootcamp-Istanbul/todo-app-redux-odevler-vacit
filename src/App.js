@@ -12,7 +12,6 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.addTodo = this.addTodo.bind(this);
-        this.removeAllTodos = this.removeAllTodos.bind(this);
         this.toggleCompleteStatus = this.toggleCompleteStatus.bind(this);
     }
 
@@ -40,13 +39,7 @@ class App extends Component {
         });
     }
 
-    removeAllTodos() {
-        this.setState({
-            todos: []
-        }, () => {
-            window.localStorage.removeItem("todos");
-        })
-    }
+    
 
     toggleCompleteStatus(id) {
         // Map ile mevcut todolar arasında döngüye girip, değiştirmek istediğimi farklı şekilde dönüyorum.
@@ -86,7 +79,7 @@ class App extends Component {
                     <h3>Todo Ekle / Sil</h3>
                     <div>
                         <AddTodo onTodoAdd={this.addTodo} />
-                        <RemoveAll onRemoveAll={this.removeAllTodos} />
+                        <RemoveAll />
                         <Filters />
                     </div>
                 </div>
