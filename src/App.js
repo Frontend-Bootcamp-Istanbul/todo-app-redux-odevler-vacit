@@ -78,7 +78,7 @@ class App extends Component {
                 <div className="todo-list todo-list-add">
                     <h3>Todo Ekle / Sil</h3>
                     <div>
-                        <AddTodo onTodoAdd={this.addTodo} />
+                        <AddTodo />
                         <RemoveAll />
                         <Filters />
                     </div>
