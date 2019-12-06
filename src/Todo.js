@@ -13,7 +13,9 @@ function Todo(props) {
             {content}
             <span
                 className="remove-todo"
-                onClick={(e) => {e.stopPropagation();props.removeTodo(id)}}>X</span>
+                onClick={(e) => {
+                    e.stopPropagation();
+                    props.removeTodo(id)}}>X</span>
         </div>
     );
 }

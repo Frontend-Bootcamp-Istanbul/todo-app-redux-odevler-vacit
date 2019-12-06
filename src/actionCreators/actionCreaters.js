@@ -1,7 +1,7 @@
-import {SET_FILTER, SET_TODOS, ADD_TODO, REMOVE_TODO} from "../actions/actions";
+import {SET_FILTER, SET_TODOS, ADD_TODO, REMOVE_TODO,REMOVE_ALL} from "../actions/actions";
 
-export function setFilter(newFilter){
-    return {type: SET_FILTER, activeFilter: newFilter}
+export function setFilter(filter){
+    return {type: SET_FILTER, activeFilter: filter}
 }
 
 export function setTodos(todos){
@@ -14,4 +14,7 @@ export function addTodo(todo){
 
 export function removeTodo(id){
     return {type: REMOVE_TODO, id}
+}
+export function removeAll(){
+    return {type: REMOVE_ALL}
 }

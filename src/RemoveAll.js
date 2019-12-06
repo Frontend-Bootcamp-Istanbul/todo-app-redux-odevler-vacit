@@ -1,12 +1,16 @@
 import React from 'react';
+import {removeAll} from "./actionCreators/actionCreaters";
+import {connect} from "react-redux";
 
-
-class RemoveAll extends React.Component {
-    render() {
-        return <button className="remove-all" onClick={() => {this.props.onRemoveAll()}}>
+function RemoveAll(props) { 
+    return(
+         <button className="remove-all" onClick={() => {props.removeAll()}}>
                 Tümünü Sil
         </button>
-    }
+    )
 }
+const mapDispatchToProps=dispatch=>({
+    removeAll:()=>{dispatch(removeAll())}
+});
 
-export default RemoveAll;
+export default connect(null,mapDispatchToProps)(RemoveAll);
