@@ -1,49 +1,47 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { addTodo } from "./actionCreators/actionCreaters";
+import { addTodo, setInput, getInput,removeTodo } from "./actionCreators/actionCreaters";
 
 
-let inputVal;
+let inputVal="";
+class AddTodo extends React.Component {
+    // constructor(props){
+    //     super(props);
+    // }
 
-function AddTodo(props) {
+    changeInput = (e) => {
+        this.props.setInput(e.target.value);
+    }
 
-    return (
-        <form
+    onAddTodo = (event) => {
+        event.preventDefault();
+        this.props.addTodo(this.props.getInput());
+        this.props.setInput("")
+    }
+
+    render() {
+        // const { addTodo } = this.props;
+        return <form
             onSubmit={(e) => {
-                e.preventDefault();
-                props.addTodo(inputVal);
+                this.onAddTodo(e)
             }}>
             <input
                 type="text"
-                value={inputVal}
-                onChange={changeInput} />
+                value={() => this.props.getInput()}
+                onChange={this.changeInput} />
             <button>Ekle</button>
         </form>
-    )
-
-    // this.changeInput = this.changeInput.bind(this);
-    // this.addTodo = this.addTodo.bind(this);
+    }
 }
-
-const changeInput = (e) => {
-    inputVal = e.target.value;
-
-
-}
-
-// const addTodo = (event) => {
-//     event.preventDefault();
-//     this.props.addTodo(this.state.inputVal);
-//     this.setState({
-//         inputVal: ""
-//     });
-// }
-
-// const addTodo = this.props;
-
-
-const mapDispatchToProps = dispatch => ({
-    removeTodo: (todo) => { dispatch(addTodo(todo)) }
+const mapStateToProps = (state) => ({
+    inputVal: state.inputVal,
 });
 
-export default connect(null,mapDispatchToProps)(AddTodo);
+const mapDispatchToProps = dispatch => ({
+    removeTodo: (todo) => { dispatch(removeTodo(todo)) },
+    addTodo: (input) => { dispatch(addTodo(input)) },
+    getInput: () => { dispatch(getInput()) },
+    setInput: (input) => { dispatch(setInput(input)) },
+});
+
+export default connect(null, mapDispatchToProps)(AddTodo);

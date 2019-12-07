@@ -13,4 +13,5 @@ const mapDispatchToProps=dispatch=>({
     removeAll:()=>{dispatch(removeAll())}
 });
 
+
 export default connect(null,mapDispatchToProps)(RemoveAll);

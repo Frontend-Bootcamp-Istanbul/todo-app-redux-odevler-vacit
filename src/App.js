@@ -39,7 +39,7 @@ class App extends Component {
         });
     }
 
-    
+
 
     toggleCompleteStatus(id) {
         // Map ile mevcut todolar arasında döngüye girip, değiştirmek istediğimi farklı şekilde dönüyorum.
@@ -85,7 +85,9 @@ class App extends Component {
                 </div>
                 <TodoList
                     title="Todolist"
-                    todos={this.filterTodos(this.props.todos, this.props.activeFilter)}
+                    todos={this.filterTodos(
+                        this.props.todos,
+                        this.props.activeFilter)}
                     onCheckedToggle={this.toggleCompleteStatus} />
             </div>
         );
